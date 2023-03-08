@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1e293b;
+    color: white;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #be123c;
+    color: white;
+}
+
+.navAchor{
+    list-style: none;
+    margin: auto 0;
+    text-align: right;
+    color: white;
+    text-decoration: none;
+}
+
+.navAchor:hover{
+    color: #3b82f6;
+    transition: 500ms;
+}
+
+.actions{
+    margin: 10px;
+}
+
+.song-btn{
+    text-decoration: none;
+    color: white;
+    background-color: #15803d;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.song-btn:hover{
+    background-color: #166534;
+}
+
+.play-btn{
+    color: white;
+    background-color: #b91c1c;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.play-btn:hover{
+    background-color: #991b1b;
+}
+
+.stop-btn{
+    color: white;
+    background-color: #b91c1c;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.stop-btn:hover{
+    background-color: #991b1b;
+}
+
+#title{
+    font-family: 'Permanent Marker', cursive;
+    font-size: larger;
+    cursor: pointer;
+}
+
+section{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px;
+    padding: 10px 20vw;
+}
+
+.blue{
+    background-color: #1e40af;
+}
+
+.custom-shape-divider-top-1674753540 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1674753540 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 39px;
+}
+
+.custom-shape-divider-top-1674753540 .shape-fill {
+    fill: #BE123C;
+}
+
+.custom-shape-divider-top-1674761176 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1674761176 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 39px;
+}
+
+.custom-shape-divider-top-1674761176 .shape-fill {
+    fill: #1E40AF;
+}
