@@ -93,7 +93,8 @@ timeStamp.innerHTML = `${min}:0${sec}/`;
 
 radioBtns.forEach(radioBtn => {
     radioBtn.addEventListener("click", () => {
-        audio = new Audio(`./music/${radioBtn.value}.mp3`)
+        stopSong();
+        audio = new Audio(`./music/${radioBtn.value}.mp3`);
         audio.addEventListener("timeupdate", updateProgress);
         if(radioBtn.value === "Easy_Target"){
             img.src = "./pictures/easyPingus.png";
@@ -122,9 +123,8 @@ function stopSong(){
     audio.pause();
     audio.currentTime = 0;
     isPaused = true;
-    sec = 0;
+    sec = 0
     min = 0
     icon.classList.remove('fa-pause');
     icon.classList.add('fa-play');
-    timeStamp.innerHTML = `${min}:0${sec}/4:11`;
 }
