@@ -10,23 +10,23 @@ body{
 
 .navbar{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
+    gap: 40rem;
+    margin: auto 0;
     background-color: #be123c;
     color: white;
 }
 
 .navAchor{
     list-style: none;
-    margin: auto 0;
-    text-align: right;
     color: white;
     text-decoration: none;
 }
 
 .navAchor:hover{
     color: #3b82f6;
-    transition: 500ms;
 }
 
 .actions{
@@ -46,37 +46,50 @@ body{
     background-color: #166534;
 }
 
-.play-btn{
+.btn{
     color: white;
     background-color: #b91c1c;
-    padding: 10px;
+    padding: 7px;
+    width: 40px;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
-.play-btn:hover{
+.btn:hover{
     background-color: #991b1b;
 }
-
-.stop-btn{
-    color: white;
-    background-color: #b91c1c;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.stop-btn:hover{
-    background-color: #991b1b;
-}
-
 #title{
     font-family: 'Permanent Marker', cursive;
     font-size: larger;
     cursor: pointer;
 }
+
+.song-cover{
+    border-radius: 30px;
+    width: 170px;
+}
+
+.radio-container{
+    padding: 10px;
+}
+
+.progress-container{
+    background: #1e293b;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px auto;
+    height: 6px;
+    width: 300px;
+  }
+  
+  .progress{
+    width: 0;
+    height: 100%;
+    border-radius: 6px;
+    background-color: #b91c1c;
+    transition: width 0.1s linear;
+  }
 
 section{
     position:relative;
