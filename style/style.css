@@ -77,7 +77,8 @@ input[type="radio"]{
 
 label{
     position: relative;
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: bold;
     padding: 10px;
     background-color: #b91c1c;
     cursor: pointer;
