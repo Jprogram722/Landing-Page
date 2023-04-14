@@ -37,7 +37,7 @@ function updateMin(sec, min){
 }
 
 function updateProgress(e){
-    const {duration, currentTime} = e.srcElement;
+    let {duration, currentTime} = e.srcElement;
     const progPercent = (currentTime/duration) * 100;
     progress.style.width = progPercent+"%";
     const max_sec = Math.floor(duration - 240);
@@ -66,7 +66,7 @@ function updateProgress(e){
     }
 
     if(progPercent === 100){
-        audio.pause();
+        playSong();
         currentTime = 0;
     }
 }
@@ -77,6 +77,8 @@ const timeStamp = document.querySelector('.time-stamp');
 const progress = document.querySelector('.progress');
 const radioBtns = document.querySelectorAll('input[name="song"]');
 const icon = document.querySelector('i');
+const img = document.querySelector('.song-cover');
+console.log(img.src);
 
 playBtn.addEventListener('click', playSong);
 stopBtn.addEventListener('click', stopSong);
@@ -93,6 +95,12 @@ radioBtns.forEach(radioBtn => {
     radioBtn.addEventListener("click", () => {
         audio = new Audio(`./music/${radioBtn.value}.mp3`)
         audio.addEventListener("timeupdate", updateProgress);
+        if(radioBtn.value === "Easy_Target"){
+            img.src = "./pictures/easyPingus.png";
+        }
+        else{
+            img.src = "./pictures/Sweet_pic.png";
+        }
     })
 })
 

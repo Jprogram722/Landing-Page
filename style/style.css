@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body{
     margin: 0;
@@ -59,9 +59,10 @@ body{
 .btn:hover{
     background-color: #991b1b;
 }
+
 #title{
-    font-family: 'Permanent Marker', cursive;
-    font-size: larger;
+    font-family: 'Bebas Neue', cursive;
+    font-size: xx-large;
     cursor: pointer;
 }
 
