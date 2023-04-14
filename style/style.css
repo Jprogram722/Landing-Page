@@ -82,9 +82,6 @@ label{
     background-color: #b91c1c;
     cursor: pointer;
     transition: background 0.1s;
-}
-
-label:not(:last-of-type){
     border: 1px solid #7f1d1d;
 }
 

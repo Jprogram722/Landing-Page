@@ -20,6 +20,7 @@ function updateTimeStamp(sec, min, max_sec, max_min){
     }
 }
 
+// updates the min varibale depending on how many seconds into the song user is
 function updateMin(sec, min){
     if(sec === 60){
       return 1;
@@ -39,9 +40,13 @@ function updateMin(sec, min){
 function updateProgress(e){
     let {duration, currentTime} = e.srcElement;
     const progPercent = (currentTime/duration) * 100;
-    progress.style.width = progPercent+"%";
+    progress.style.width = progPercent+"%"; // updates progress bar
+    
+    // gets the songs duration in min and sec
     const max_sec = Math.floor(duration - 240);
     const max_min = Math.floor(duration / 60);
+    
+    // gets how many seconds and minutes into the song user is
     sec = Math.floor(currentTime);
     min = updateMin(sec, min);
     updateTimeStamp(sec, min, max_sec, max_min);
@@ -65,12 +70,14 @@ function updateProgress(e){
         updateTimeStamp(sec, min, max_sec, max_min);
     }
 
+    // Once Song Finishes
     if(progPercent === 100){
         playSong();
         currentTime = 0;
     }
 }
 
+// Gets Elements from the DOM or HTML file
 const playBtn = document.querySelector('.play-btn');
 const stopBtn = document.querySelector('.stop-btn');
 const timeStamp = document.querySelector('.time-stamp');
@@ -78,24 +85,37 @@ const progress = document.querySelector('.progress');
 const radioBtns = document.querySelectorAll('input[name="song"]');
 const icon = document.querySelector('i');
 const img = document.querySelector('.song-cover');
-console.log(img.src);
 
+// Adds event listeners to the play and stop button
 playBtn.addEventListener('click', playSong);
 stopBtn.addEventListener('click', stopSong);
 
-
-let audio = new Audio(`./music/Sweet_Serenade.mp3`)
+// init audio as sweet serenade
+let audio = new Audio(`./music/Sweet_Serenade.mp3`);
 audio.addEventListener("timeupdate", updateProgress);
+
+// init song as paused
 let isPaused = true;
+
+// init time as 0 seconds and 0 mintues
 let sec = 0;
 let min = 0;
+
+// updates timestamp in the dom to the current min and secs into the song
 timeStamp.innerHTML = `${min}:0${sec}/`;
 
+// adds event listeners to each radio button
 radioBtns.forEach(radioBtn => {
     radioBtn.addEventListener("click", () => {
         stopSong();
+
+        // toggles which song is queued to played
         audio = new Audio(`./music/${radioBtn.value}.mp3`);
+        
+        // updates the time the songs been playing
         audio.addEventListener("timeupdate", updateProgress);
+        
+        // Changes what image to show based in which radio button is toggled
         if(radioBtn.value === "Easy_Target"){
             img.src = "./pictures/easyPingus.png";
         }
@@ -105,10 +125,13 @@ radioBtns.forEach(radioBtn => {
     })
 })
 
+
 function playSong(){
-    isPaused = !isPaused;
+    isPaused = !isPaused; // changes between paused and unpaused
     if(!isPaused){
         audio.play();
+
+        //Switchs icons on the play/pause button
         icon.classList.remove('fa-play');
         icon.classList.add('fa-pause');
     }
@@ -121,10 +144,9 @@ function playSong(){
 
 function stopSong(){
     audio.pause();
-    audio.currentTime = 0;
+    audio.currentTime = 0; // resets the time
     isPaused = true;
-    sec = 0
-    min = 0
+    sec, min = 0 // resets time for timeStamp
     icon.classList.remove('fa-pause');
     icon.classList.add('fa-play');
 }
