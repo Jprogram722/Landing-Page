@@ -47,27 +47,27 @@ function updateProgress(e){
     const max_min = Math.floor(duration / 60);
     
     // gets how many seconds and minutes into the song user is
-    sec = Math.floor(currentTime);
-    min = updateMin(sec, min);
-    updateTimeStamp(sec, min, max_sec, max_min);
-    if(sec >= 10){
-        updateTimeStamp(sec, min, max_sec, max_min);
+    time.sec = Math.floor(currentTime);
+    time.min = updateMin(time.sec, time.min);
+    updateTimeStamp(time.sec, time.min, max_sec, max_min);
+    if(time.sec >= 10){
+        updateTimeStamp(time.sec, time.min, max_sec, max_min);
     }
-    if(sec >= 60 * 4){
-        sec = sec - 60*4;
-        updateTimeStamp(sec, min, max_sec, max_min);
+    if(time.sec >= 60 * 4){
+        time.sec = time.sec - 60*4;
+        updateTimeStamp(time.sec, time.min, max_sec, max_min);
     }
-    else if(sec >= 60 * 3){
-        sec = sec - 60*3;
-        updateTimeStamp(sec, min, max_sec, max_min);
+    else if(time.sec >= 60 * 3){
+        time.sec = time.sec - 60*3;
+        updateTimeStamp(time.sec, time.min, max_sec, max_min);
     }
-    else if(sec >= 60 * 2){
-        sec = sec - 60*2;
-        updateTimeStamp(sec, min, max_sec, max_min);
+    else if(time.sec >= 60 * 2){
+        time.sec = time.sec - 60*2;
+        updateTimeStamp(time.sec, time.min, max_sec, max_min);
     }
-    else if(sec >= 60){
-        sec = sec - 60;
-        updateTimeStamp(sec, min, max_sec, max_min);
+    else if(time.sec >= 60){
+        time.sec = time.sec - 60;
+        updateTimeStamp(time.sec, time.min, max_sec, max_min);
     }
 
     // Once Song Finishes
@@ -98,11 +98,13 @@ audio.addEventListener("timeupdate", updateProgress);
 let isPaused = true;
 
 // init time as 0 seconds and 0 mintues
-let sec = 0;
-let min = 0;
+let time ={
+    min: 0,
+    sec: 0
+}
 
 // updates timestamp in the dom to the current min and secs into the song
-timeStamp.innerHTML = `${min}:0${sec}/`;
+timeStamp.innerHTML = `${time.min}:0${time.sec}/`;
 
 // adds event listeners to each radio button
 radioBtns.forEach(radioBtn => {
@@ -146,7 +148,7 @@ function stopSong(){
     audio.pause();
     audio.currentTime = 0; // resets the time
     isPaused = true;
-    sec, min = 0 // resets time for timeStamp
+    time.sec, time.min = 0 // resets time for timeStamp
     icon.classList.remove('fa-pause');
     icon.classList.add('fa-play');
 }
