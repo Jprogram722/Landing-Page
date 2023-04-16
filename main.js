@@ -22,17 +22,20 @@ function updateTimeStamp(sec, min, max_sec, max_min){
 
 // updates the min varibale depending on how many seconds into the song user is
 function updateMin(sec, min){
-    if(sec === 60){
+    if(sec >= (60 * 4)){
+        return 4;
+    }
+    else if(sec >= (60 * 3)){
+        return 3;
+    }
+    else if(sec >= (60 * 2)){
+        return 2;
+    }
+    else if(sec >= 60){
       return 1;
     }
-    if(sec === 60 * 2){
-      return 2;
-    }
-    if(sec === 60 * 3){
-      return 3;
-    }
-    if(sec === 60 * 4){
-      return 4;
+    else if(sec < 60){
+        return 0;
     }
     return min;
 }
@@ -46,7 +49,7 @@ function updateProgress(e){
     const max_sec = Math.floor(duration - 240);
     const max_min = Math.floor(duration / 60);
     
-    // gets how many seconds and minutes into the song user is
+    // gets how many seconds and minutes into the song user is (Updating Timestamp)
     time.sec = Math.floor(currentTime);
     time.min = updateMin(time.sec, time.min);
     updateTimeStamp(time.sec, time.min, max_sec, max_min);
@@ -81,6 +84,7 @@ function updateProgress(e){
 const playBtn = document.querySelector('.play-btn');
 const stopBtn = document.querySelector('.stop-btn');
 const timeStamp = document.querySelector('.time-stamp');
+const progBar = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
 const radioBtns = document.querySelectorAll('input[name="song"]');
 const icon = document.querySelector('i');
@@ -89,6 +93,7 @@ const img = document.querySelector('.song-cover');
 // Adds event listeners to the play and stop button
 playBtn.addEventListener('click', playSong);
 stopBtn.addEventListener('click', stopSong);
+progBar.addEventListener('click', changeProg);
 
 // init audio as sweet serenade
 let audio = new Audio(`./music/Sweet_Serenade.mp3`);
@@ -127,6 +132,15 @@ radioBtns.forEach(radioBtn => {
     })
 })
 
+function changeProg(e){
+    // e.offsetX is the width from the zero point the user clicked
+    // progBar.offsetWidth is the full width of the progress bar
+    const progPercent = (e.offsetX / progBar.offsetWidth) * 100;
+    
+    audio.currentTime = audio.duration * (progPercent / 100); // change what time you want to play the song at
+    time.sec = Math.floor(audio.currentTime);
+    time.min = updateMin(time.sec, time.min);
+}
 
 function playSong(){
     isPaused = !isPaused; // changes between paused and unpaused
