@@ -13,10 +13,44 @@ body{
     align-items: center;
     justify-content: center;
     padding: 10px;
-    gap: 40rem;
+    gap: 10rem;
     margin: auto 0;
     background-color: #be123c;
     color: white;
+}
+
+@media only screen and (min-width: 1000px){
+    .navbar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        gap: 40rem;
+        margin: auto 0;
+        background-color: #be123c;
+        color: white;
+    }
+    
+    #title{
+        font-family: 'Bebas Neue', cursive;
+        font-size: xx-large;
+        cursor: pointer;
+    }
+
+    .progress-container{
+        background: #1e293b;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 10px auto;
+        height: 6px;
+        width: 300px;
+    }
+
+    .radio-container{
+        display: inline-flex;
+        padding: 10px;
+        overflow: hidden;
+    }
 }
 
 .navAchor{
@@ -62,7 +96,7 @@ body{
 
 #title{
     font-family: 'Bebas Neue', cursive;
-    font-size: xx-large;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -92,7 +126,7 @@ input[type="radio"]:checked + label{
 
 .radio-container{
     display: inline-flex;
-    padding: 10px;
+    padding: 5px;
     overflow: hidden;
 }
 
@@ -108,9 +142,9 @@ input[type="radio"]:checked + label{
     background: #1e293b;
     border-radius: 4px;
     cursor: pointer;
-    margin: 10px auto;
+    margin: 5px auto;
     height: 6px;
-    width: 300px;
+    width: 250px;
   }
   
   .progress{
